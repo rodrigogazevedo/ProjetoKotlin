@@ -9,4 +9,10 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="overview">Overview:</string>
+    <string name="titleApp">Movie List</string>
+    <string name="popular_movies_btn">Popular</string>
+    <string name="now_playing_movies_btn">Now Playing</string>
+    <string name="upcoming_movies_btn">Upcoming</string>
+    <string name="favorite_movies_btn">Favorite</string>
 </resources>

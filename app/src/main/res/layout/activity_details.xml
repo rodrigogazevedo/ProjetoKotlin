@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#808080"
+        tools:context=".view.activity.DetailsActivity"
+        android:textColor="#9C27B0">
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="50dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/posterEnlargeMV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/posterMV"
+            android:layout_width="164dp"
+            android:layout_height="208dp"
+            android:scaleType="fitXY"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="16dp"
+            android:background="#949494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_marginStart="170dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="27sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.075"
+            app:layout_constraintStart_toEndOf="@id/posterMV"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Annabelle" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/genres"
+            android:layout_width="match_parent"
+            android:layout_marginStart="170dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/posterMV"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            tools:text="Action | Crime" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/runtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_baseline_access_time_24"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:gravity="center"
+            app:layout_constraintHorizontal_bias="0.075"
+            app:layout_constraintStart_toEndOf="@id/posterMV"
+            app:layout_constraintTop_toBottomOf="@id/genres"
+            tools:text="120min" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/releaseDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_baseline_calendar_today_24"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_marginStart="15dp"
+            app:layout_constraintStart_toEndOf="@id/runtime"
+            app:layout_constraintTop_toBottomOf="@id/genres"
+            tools:text="@tools:sample/date/mmddyy" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/voteCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_baseline_people_24"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:gravity="center"
+            app:layout_constraintHorizontal_bias="0.075"
+            app:layout_constraintStart_toEndOf="@id/posterMV"
+            app:layout_constraintTop_toBottomOf="@id/runtime"
+            tools:text="120" />
+
+        <androidx.appcompat.widget.AppCompatRatingBar
+            android:id="@+id/ratingBar"
+            style="?android:attr/ratingBarStyleIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:progressTint="#DAA520"
+            android:secondaryProgressTint="#DAA520"
+            app:layout_constraintStart_toEndOf="@id/posterMV"
+            app:layout_constraintTop_toBottomOf="@id/voteCount"
+            tools:ignore="MissingConstraints"
+            tools:rating="3.5" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_favorites"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:height="40dp"
+            android:maxHeight="20dp"
+            android:minHeight="20dp"
+            android:textColor="@color/white"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/custom_rounded_corners_button"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="Add to Your Favorite Movie"
+            app:layout_constraintTop_toBottomOf="@id/posterMV"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:text="Add to Your Favorite Movie"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/label_overview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/overview"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            app:layout_constraintTop_toBottomOf="@id/btn_favorites"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintVertical_bias="0.366" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/overview"
+            android:layout_width="381dp"
+            android:layout_height="250dp"
+            android:justificationMode="inter_word"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label_overview"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Em Anabelle, John (Ward Horton) encontrou o presente
+            perfeito para sua futura esposa, Mia (Annabelle Wallis). Porém
+            membros de uma seita satânica invadem a casa e, ao tentarem invocar
+            um demônio, eles mancham a boneca de sangue, tornando-a receptora de
+            uma entidade do mal" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

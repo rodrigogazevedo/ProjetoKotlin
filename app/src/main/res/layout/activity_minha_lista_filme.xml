@@ -3,16 +3,73 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-    </data>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#191919"
-        tools:context=".MoviesList">
-        
+        android:orientation="vertical"
+        tools:context=".view.activity.MoviesListActivity">
+
+        <TextView
+            android:id="@+id/titleApp"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/krona_one"
+            android:text="@string/titleApp"
+            android:textColor="#ffffff"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginBottom="10dp">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_popularMovies"
+                android:layout_width="113dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/custom_rounded_corners_button_popular"
+                android:text="@string/popular_movies_btn"
+                android:textColor="@color/button_text" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_nowPlayingMovies"
+                android:layout_width="113dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/custom_rounded_corners_button_nowplaying"
+                android:text="@string/now_playing_movies_btn"
+                android:textColor="@color/button_text" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_upcomingMovies"
+                android:layout_width="113dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/custom_rounded_corners_button_upcoming"
+                android:text="@string/upcoming_movies_btn"
+                android:textColor="@color/button_text" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginBottom="10dp">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_favoriteMovies"
+                android:layout_width="113dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custom_rounded_corners_button_favorite"
+                android:text="@string/favorite_movies_btn"
+                android:textColor="@color/button_text" />
+
+        </LinearLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/movieRV"
             android:layout_width="match_parent"
@@ -20,7 +77,7 @@
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:itemCount="10"
-            tools:listitem="@layout/movie_item"/>
+            tools:listitem="@layout/movie_item" />
 
 
     </LinearLayout>
