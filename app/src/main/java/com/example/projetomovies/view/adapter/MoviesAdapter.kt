@@ -9,8 +9,8 @@ import com.example.projetomovies.models.model.MovieModel
 
 class MoviesViewHolder(val binding: MovieItemBinding) : RecyclerView.ViewHolder(binding.root)
 
-//class MoviesAdapter(val clickMovie:(Int) -> Unit, val favoriteCallback: (Int, Boolean) -> Unit):
-class MoviesAdapter(val clickMovie:(Int) -> Unit):
+class MoviesAdapter(val clickMovie:(Int) -> Unit, val favoriteCallback: (MovieModel, Boolean) -> Unit):
+//class MoviesAdapter(val clickMovie:(Int) -> Unit):
     RecyclerView.Adapter<MoviesViewHolder>() {
 
     private val listMovies: MutableList<MovieModel> = mutableListOf()
@@ -29,6 +29,10 @@ class MoviesAdapter(val clickMovie:(Int) -> Unit):
         viewHolder.binding.itemBackground.setOnClickListener {
             clickMovie(item.id)
         }
+        viewHolder.binding.favoriteIcon.isChecked = item.isFavorite
+        viewHolder.binding.favoriteIcon.setOnCheckedChangeListener { buttonView, isChecked ->
+            favoriteCallback(item, isChecked)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -40,6 +44,4 @@ class MoviesAdapter(val clickMovie:(Int) -> Unit):
         listMovies.addAll(list)
         notifyDataSetChanged()
     }
-
-
 }

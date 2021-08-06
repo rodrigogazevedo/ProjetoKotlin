@@ -2,17 +2,20 @@ package com.example.projetomovies.view.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.projetomovies.MovieList
 import com.example.projetomovies.MoviesAdapter
 import com.example.projetomovies.databinding.ActivityMinhaListaFilmeBinding
+import com.example.projetomovies.models.model.MovieModel
 import com.example.projetomovies.models.repository.MovieRepository
+import com.example.projetomovies.view.activity.DetailsActivity.Companion.ID_MOVIE
 
 class MoviesListActivity : AppCompatActivity() {
 
+    companion object {
+        const val ID_LIST: String = "id_list"
+    }
+
     private lateinit var binding: ActivityMinhaListaFilmeBinding
-    //val viewModel: MovieListViewModel = ViewModelProvider(this).get(MovieListViewModel::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +42,11 @@ class MoviesListActivity : AppCompatActivity() {
         }
 
         binding.btnUpcomingMovies.setOnClickListener {
-            callPopular()
+            callUpcoming()
+        }
+
+        binding.btnFavoriteMovies.setOnClickListener {
+            callFavorite()
         }
     }
 
@@ -49,6 +56,7 @@ class MoviesListActivity : AppCompatActivity() {
         binding.movieRV.adapter = adapter
 
         MovieRepository.getPopular { list ->
+            callUpdateListFavorite(list)
             adapter.notifyDataSetChanged()
             adapter.addItemList(list)
         }
@@ -60,32 +68,72 @@ class MoviesListActivity : AppCompatActivity() {
         binding.movieRV.adapter = adapter
 
         MovieRepository.getNowPlaying { list ->
+            callUpdateListFavorite(list)
             adapter.notifyDataSetChanged()
             adapter.addItemList(list)
         }
     }
 
     private fun callUpcoming() {
+
         val adapter = callMovieAdapter()
 
         binding.movieRV.adapter = adapter
 
         MovieRepository.getUpcoming { list ->
+            callUpdateListFavorite(list)
             adapter.notifyDataSetChanged()
             adapter.addItemList(list)
         }
     }
 
     private fun callFavorite() {
-        TODO("Not yet implemented")
+        val adapter = callMovieAdapter()
+
+        binding.movieRV.adapter = adapter
+
+        MovieRepository.allFavorite(this) { list ->
+            list.forEach { movie ->
+                movie.isFavorite = true
+            }
+            adapter.notifyDataSetChanged()
+            adapter.addItemList(list)
+        }
     }
 
-    private fun callMovieAdapter(): MoviesAdapter {
-        val adapter = MoviesAdapter { id ->
-            val intent = Intent(this, DetailsActivity::class.java)
-            intent.putExtra("idMovie", id)
-            startActivity(intent)
+
+    private fun callUpdateListFavorite(list: List<MovieModel>) {
+        val adapter = callMovieAdapter()
+
+        binding.movieRV.adapter = adapter
+
+        MovieRepository.allFavorite(this) {
+            list.forEach { movie ->
+                movie.isFavorite = it.any { movieModel ->
+                    movie.id == movieModel.id
+                }
+            }
+            adapter.notifyDataSetChanged()
+            adapter.addItemList(list)
         }
+    }
+
+
+    private fun callMovieAdapter(): MoviesAdapter {
+        val idList = intent.getIntExtra(ID_LIST, -1)
+
+        val adapter = MoviesAdapter ({ id ->
+            val intent = Intent(this, DetailsActivity::class.java)
+            intent.putExtra(ID_MOVIE, id)
+            intent.putExtra(ID_LIST, idList)
+            startActivity(intent)
+        }, { movie, isFavorite ->
+            if(isFavorite) MovieRepository.addFavorite(this,movie)
+            else MovieRepository.deleteFavorite(this, movie)
+
+        })
+
+        adapter.notifyDataSetChanged()
 
         return adapter
     }

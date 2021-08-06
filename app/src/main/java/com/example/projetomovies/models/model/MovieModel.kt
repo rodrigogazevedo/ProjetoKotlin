@@ -25,12 +25,12 @@ data class MovieModel(
     val runtime: Int?,
     @Ignore
     val genres: List<GenreModel> = listOf(),
-//    @ColumnInfo(name = "isFavorite")
-//    val isFavorite: Boolean = false
+    @ColumnInfo(name = "isFavorite")
+    var isFavorite: Boolean = false
 ) {
     constructor(title: String, id: Int, poster_path: String?, overview: String?,
                 release_date: String, vote_count: Int, vote_average: Double,
-                runtime: Int?) :
+                runtime: Int?, isFavorite: Boolean) :
             this(title, id, poster_path, overview, release_date, vote_count, vote_average, runtime,
-                listOf())
+                listOf(), isFavorite)
 }

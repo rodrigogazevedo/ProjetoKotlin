@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
-            android:visibility="visible"
+            android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@tools:sample/avatars" />
@@ -38,6 +38,7 @@
             android:layout_width="164dp"
             android:layout_height="208dp"
             android:scaleType="fitXY"
+            android:translationZ="20dp"
             android:layout_marginStart="4dp"
             android:layout_marginTop="16dp"
             android:background="#949494"
@@ -119,28 +120,11 @@
             android:layout_height="wrap_content"
             android:progressTint="#DAA520"
             android:secondaryProgressTint="#DAA520"
+            android:progressBackgroundTint="#DAA520"
             app:layout_constraintStart_toEndOf="@id/posterMV"
             app:layout_constraintTop_toBottomOf="@id/voteCount"
             tools:ignore="MissingConstraints"
             tools:rating="3.5" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_favorites"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:height="40dp"
-            android:maxHeight="20dp"
-            android:minHeight="20dp"
-            android:textColor="@color/white"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/custom_rounded_corners_button"
-            android:textSize="16sp"
-            android:gravity="center"
-            android:text="Add to Your Favorite Movie"
-            app:layout_constraintTop_toBottomOf="@id/posterMV"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            tools:text="Add to Your Favorite Movie"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/label_overview"
@@ -151,7 +135,7 @@
             android:textStyle="bold"
             android:textColor="@color/white"
             android:textSize="22sp"
-            app:layout_constraintTop_toBottomOf="@id/btn_favorites"
+            app:layout_constraintTop_toBottomOf="@id/posterMV"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintVertical_bias="0.366" />
 

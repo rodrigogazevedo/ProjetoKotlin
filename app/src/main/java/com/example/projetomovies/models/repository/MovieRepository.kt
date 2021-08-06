@@ -28,7 +28,7 @@ object MovieRepository {
         }
     }
 
-    fun AddFavorite(context: Context, movie: MovieModel) {
+    fun addFavorite(context: Context, movie: MovieModel) {
         initDataBase(context)
         CoroutineScope(GlobalScope.coroutineContext).launch {
             withContext(Dispatchers.IO) {
@@ -37,7 +37,7 @@ object MovieRepository {
         }
     }
 
-    fun DeleteFavorite(context: Context, movie: MovieModel) {
+    fun deleteFavorite(context: Context, movie: MovieModel) {
         initDataBase(context)
         CoroutineScope(GlobalScope.coroutineContext).launch {
             withContext(Dispatchers.IO) {
@@ -46,7 +46,7 @@ object MovieRepository {
         }
     }
 
-    fun AllFavorite(context: Context, callback: (List<MovieModel>) -> Unit) {
+    fun allFavorite(context: Context, callback: (List<MovieModel>) -> Unit) {
         initDataBase(context)
         CoroutineScope(GlobalScope.coroutineContext).launch {
             withContext(Dispatchers.IO) {

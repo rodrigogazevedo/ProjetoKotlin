@@ -27,7 +27,7 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_popularMovies"
-                android:layout_width="113dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5dp"
                 android:background="@drawable/custom_rounded_corners_button_popular"
@@ -36,7 +36,7 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_nowPlayingMovies"
-                android:layout_width="113dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5dp"
                 android:background="@drawable/custom_rounded_corners_button_nowplaying"
@@ -45,7 +45,7 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_upcomingMovies"
-                android:layout_width="113dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5dp"
                 android:background="@drawable/custom_rounded_corners_button_upcoming"
@@ -62,7 +62,7 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_favoriteMovies"
-                android:layout_width="113dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/custom_rounded_corners_button_favorite"
                 android:text="@string/favorite_movies_btn"
@@ -76,7 +76,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:itemCount="10"
             tools:listitem="@layout/movie_item" />
 
 
